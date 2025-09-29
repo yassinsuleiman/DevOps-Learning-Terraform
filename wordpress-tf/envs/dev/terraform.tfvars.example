@@ -1,0 +1,30 @@
+# terraform.tfvars.example
+
+# ── VPC + Subnet CIDR
+aws_region           = "eu-north-1"
+vpc_cidr             = "10.0.0.0/16"
+
+public1_subnet_cidr  = "10.0.1.0/24"
+public2_subnet_cidr  = "10.0.3.0/24"
+private1_subnet_cidr = "10.0.2.0/24"
+private2_subnet_cidr = "10.0.4.0/24"
+
+# ── Host IP for SSH (replace with your real public IP + /32)
+my_ip_cidr           = "YOUR_IP/32"
+
+# ── EC2
+ami_type             = "ami-xxxxxxxx" # replace with valid AMI ID
+instance_type        = "t3.micro"
+key_name             = "your-keypair"
+ec2_sg_id            = []  
+acm_cert_arn         = "arn:aws:acm:region:account:certificate/xxxx"
+
+# ── RDS Database
+engine_type          = "mysql"
+engine_version       = "8.0"
+db_instance_type     = "db.t3.micro"
+allocated_storage    = 20
+db_name              = "wordpress"
+db_user              = "wpuser"
+db_passwd            = "CHANGE_ME"   # placeholder, never commit real password
+deletion_protection  = false
