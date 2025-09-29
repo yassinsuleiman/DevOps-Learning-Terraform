@@ -1,6 +1,6 @@
-# 🌍 WordPress on AWS —Terraform Multi-AZ Infrastructure
+# WordPress on AWS Terraform Multi-AZ Infrastructure
 
-This project demonstrates the deployment of a **highly available WordPress application** on AWS using **Terraform** and modular Infrastructure as Code practices. It includes networking, compute, database, load balancing, and secure state management — a complete end-to-end cloud environment.
+This project demonstrates the deployment of a **highly available WordPress application** on AWS using **Terraform** and modular Infrastructure as Code practices. It includes networking, compute, database, load balancing, and secure state management - a complete end-to-end cloud environment.
 
 <img width="670" height="586" alt="alb_frontend" src="https://github.com/user-attachments/assets/1eed0e4f-06dd-417c-875a-499f299bdff0" />
 
@@ -44,7 +44,7 @@ DevOps-Learning-Terraform/
 
 ---
 
-## 🎯 Goals
+## Goals
 
 * Deploy a **multi-AZ WordPress environment** with Terraform  
 * Use **modular design** (VPC, EC2, RDS, ALB separated)  
@@ -114,7 +114,7 @@ Once complete, access WordPress via the **ALB DNS** endpoint.
 
 ---
 
-## 🛑 Problems I Encountered
+## Problems I Encountered
 
 ### 1. Variables & Outputs Pipeline
 The biggest struggle was wiring variables and outputs across modules.  
@@ -134,7 +134,7 @@ It took trial and error to get the syntax right and ensure `wp-config.php` was i
 
 ---
 
-## 📚 Lessons Learned
+## Lessons Learned
 
 * Importance of **modular Terraform design** for clarity and reusability  
 * How to manage **remote state** with S3 + DynamoDB  
