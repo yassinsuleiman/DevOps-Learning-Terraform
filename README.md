@@ -1,6 +1,6 @@
 # WordPress on AWS Terraform Multi-AZ Infrastructure
 
-This project demonstrates the deployment of a **highly available WordPress application** on AWS using **Terraform** and modular Infrastructure as Code practices. It includes networking, compute, database, load balancing, and secure state management - a complete end-to-end cloud environment.
+This project demonstrates the deployment of a **highly available WordPress application** on AWS using **Terraform** and modular Infrastructure as Code practices. It includes networking, compute, database, load balancing, and secure state management - a complete end to end cloud environment.
 
 <img width="670" height="586" alt="alb_frontend" src="https://github.com/user-attachments/assets/1eed0e4f-06dd-417c-875a-499f299bdff0" />
 
@@ -58,7 +58,7 @@ DevOps-Learning-Terraform/
 
 * **Terraform** — Infrastructure as Code  
 * **AWS** — VPC, EC2, RDS, ALB, S3, DynamoDB  
-* **WordPress** — Application layer  
+* **WordPress** - Application layer  
 * **MySQL RDS** — Database backend  
 * **Cloud-Init** — EC2 bootstrapping  
 
@@ -72,13 +72,13 @@ git clone https://github.com/yassinsuleiman/DevOps-Learning-Terraform.git
 cd DevOps-Learning-Terraform/envs/dev
 
 # initialize with remote backend
-terraform init -reconfigure
+terraform init
 
 # preview changes
 terraform plan
 
 # apply changes
-terraform apply -auto-approve
+terraform apply
 ```
 
 Once complete, access WordPress via the **ALB DNS** endpoint.
