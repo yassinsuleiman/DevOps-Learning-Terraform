@@ -1,3 +1,4 @@
+# Configure the AWS Provider
 terraform {
   required_providers {
     aws = {
@@ -5,14 +6,10 @@ terraform {
       version = "~> 6.0"
     }
   }
-  backend "s3" {
-    bucket = "wordpressbucket-yassin"
-    key    = "terraform.tfstate"
-    region = "eu-north-1"
-  }
+
 }
 
-# Configure the AWS Provider
+# Configure the AWS region
 provider "aws" {
   region = "eu-north-1"
 }
