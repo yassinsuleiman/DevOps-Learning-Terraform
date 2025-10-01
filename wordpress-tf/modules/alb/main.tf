@@ -55,18 +55,5 @@ resource "aws_lb_listener" "http" {
   }
 }
 
-# HTTPS listener (optional)
-resource "aws_lb_listener" "https" {
-  count             = var.acm_cert_arn == "" ? 0 : 1
-  load_balancer_arn = aws_lb.alb.arn
-  port              = var.https
-  protocol          = "HTTPS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.acm_cert_arn
 
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.wp_tg.arn
-  }
-}
 
