@@ -1,6 +1,6 @@
 # WordPress on AWS Terraform Multi-AZ Infrastructure
 
-This project demonstrates the deployment of a **highly available WordPress application** on AWS using **Terraform** and modular Infrastructure as Code practices. It includes networking, compute, database, load balancing, and secure state management - a complete end to end cloud environment.
+This project demonstrates the deployment of a **highly available WordPress application** on AWS using **Terraform** and modular Infrastructure as Code practices. It includes networking, compute, database, load balancing, and secure state management, a complete end to end cloud environment.
 
 <img width="670" height="586" alt="alb_frontend" src="https://github.com/user-attachments/assets/1eed0e4f-06dd-417c-875a-499f299bdff0" />
 
@@ -50,14 +50,14 @@ DevOps-Learning-Terraform/
 * Use **modular design** (VPC, EC2, RDS, ALB separated)  
 * Secure infrastructure with **least privilege security groups**  
 * Automate WordPress installation via `cloud-init`  
-* Manage Terraform state with **S3 backend + DynamoDB locking**  
+* Manage Terraform state with **S3 backend**  
 
 ---
 
 ## Tech Stack
 
-* **Terraform** — Infrastructure as Code  
-* **AWS** — VPC, EC2, RDS, ALB, S3, DynamoDB  
+* **Terraform** - Infrastructure as Code  
+* **AWS** — VPC, EC2, RDS, ALB, S3,   
 * **WordPress** - Application layer  
 * **MySQL RDS** — Database backend  
 * **Cloud-Init** — EC2 bootstrapping  
@@ -70,6 +70,10 @@ DevOps-Learning-Terraform/
 # clone repository
 git clone https://github.com/yassinsuleiman/DevOps-Learning-Terraform.git
 cd DevOps-Learning-Terraform/envs/dev
+
+# edit terraform.tfvars with your values
+# then copy example tfvars
+mv terraform.tfvars.example terraform.tfvars
 
 # initialize with remote backend
 terraform init
@@ -110,7 +114,7 @@ Once complete, access WordPress via the **ALB DNS** endpoint.
 
 ### State Management
 * S3 bucket for Terraform state  
-* DynamoDB table for state locking  
+
 
 ---
 
@@ -123,7 +127,7 @@ This forced me to really understand how values flow:
 **`variables.tf → tfvars → module inputs → outputs.tf`**
 
 ### 2. Modularization
-Running resources flat was easy — modularizing was not.  
+Running resources flat was easy - modularizing was not.  
 Breaking VPC, EC2, RDS, and ALB into modules exposed gaps in my understanding of input/output design and module boundaries.  
 I learned that **clean modules are about minimal, precise outputs, not duplicating everything.**
 
