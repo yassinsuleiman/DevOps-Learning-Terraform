@@ -1,3 +1,4 @@
+# Variables for RDS MySQL module
 variable "db_name" {
   type = string
 
@@ -13,9 +14,11 @@ variable "db_instance_type" {
 }
 variable "db_user" {
   type = string
+  sensitive = true
 }
 variable "db_passwd" {
   type = string
+  sensitive = true
 }
 variable "rds_sg" {
   type = list(string)

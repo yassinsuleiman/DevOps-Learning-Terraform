@@ -1,3 +1,4 @@
+# Variables for EC2 WordPress module
 variable "ami_type" {
   description = "AMI ID for EC2 instances"
   type        = string

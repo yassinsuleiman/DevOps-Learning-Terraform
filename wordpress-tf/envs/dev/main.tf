@@ -1,3 +1,4 @@
+# Create VPC
 module "vpc" {
   source               = "../../modules/vpc"
   vpc_cidr             = var.vpc_cidr
@@ -7,7 +8,7 @@ module "vpc" {
   private2_subnet_cidr = var.private2_subnet_cidr
   my_ip_cidr           = var.my_ip_cidr
 }
-
+# Create RDS MySQL
 module "rds" {
   source               = "../../modules/rds_mysql"
 
@@ -29,6 +30,7 @@ module "rds" {
   deletion_protection  = var.deletion_protection
 }
 
+# Create EC2 instances (WordPress)
 module "ec2" {
   source        = "../../modules/ec2_wordpress"
 
@@ -49,7 +51,7 @@ module "ec2" {
   db_user   = var.db_user
   db_passwd = var.db_passwd
 }
-
+# Create ALBs
 module "alb" {
   source          = "../../modules/alb"
 

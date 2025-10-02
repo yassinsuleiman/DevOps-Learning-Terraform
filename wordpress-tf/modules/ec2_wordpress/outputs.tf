@@ -1,3 +1,4 @@
+# Outputs for EC2 WordPress module
 output "ec2_instance_id1" {
   description = "App1 ID"
   value       = aws_instance.app1.id

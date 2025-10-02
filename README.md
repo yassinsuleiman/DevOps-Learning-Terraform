@@ -57,35 +57,51 @@ DevOps-Learning-Terraform/
 ## Tech Stack
 
 * **Terraform** - Infrastructure as Code  
-* **AWS** — VPC, EC2, RDS, ALB, S3,   
+* **AWS** - VPC, EC2, RDS, ALB, S3,   
 * **WordPress** - Application layer  
-* **MySQL RDS** — Database backend  
-* **Cloud-Init** — EC2 bootstrapping  
+* **MySQL RDS** - Database backend  
+* **Cloud-Init** - EC2 bootstrapping  
 
 ---
 
-## ⚙️ How to Deploy
+### Prerequisites
+- AWS account with permissions (VPC, EC2, RDS, ALB, S3)  
+- Terraform installed  
+- AWS CLI configured (`aws configure`)  
+- Existing **S3 bucket** with versioning and state locking enabled (update `backend.tf` accordingly)  
+
+### Deployment Steps
 
 ```bash
-# clone repository
+# 1. Clone repository
 git clone https://github.com/yassinsuleiman/DevOps-Learning-Terraform.git
 cd DevOps-Learning-Terraform/envs/dev
 
-# edit terraform.tfvars with your values
-# then copy example tfvars
+# 2. Copy and edit variables
 mv terraform.tfvars.example terraform.tfvars
 
-# initialize with remote backend
+# Update values:
+	•	VPC + Subnets - CIDR blocks for VPC, public, and private subnets
+	•	SSH Access - my_ip_cidr (your public IP/32) + key_name (your EC2 keypair)
+	•	EC2 (WordPress app) - ami_type, instance_type, optional acm_cert_arn
+	•	RDS Database - db_user, db_passwd, db_name
+
+# 3. Initialize with remote backend or locally
 terraform init
 
-# preview changes
+# 4. Preview resources
 terraform plan
 
-# apply changes
+# 5. Apply changes
 terraform apply
-```
 
-Once complete, access WordPress via the **ALB DNS** endpoint.
+# 6. Access WordPress
+# Once complete, Terraform will output the ALB DNS endpoint.
+# Open it in your browser to access WordPress setup.
+
+# 7. Cleanup (destroy resources when done)
+terraform destroy
+```
 
 ---
 
@@ -127,7 +143,7 @@ This forced me to really understand how values flow:
 **`variables.tf → tfvars → module inputs → outputs.tf`**
 
 ### 2. Modularization
-Running resources flat was easy - modularizing was not.  
+Running resources flat was easy, modularizing was not.  
 Breaking VPC, EC2, RDS, and ALB into modules exposed gaps in my understanding of input/output design and module boundaries.  
 I learned that **clean modules are about minimal, precise outputs, not duplicating everything.**
 
@@ -141,7 +157,7 @@ It took trial and error to get the syntax right and ensure `wp-config.php` was i
 ## Lessons Learned
 
 * Importance of **modular Terraform design** for clarity and reusability  
-* How to manage **remote state** with S3 + DynamoDB  
+* How to manage **remote state** with S3 + State locking
 * Applying **least privilege** in security group rules  
 * Debugging health checks, DB connectivity, and bootstrap automation  
 * Using **cloud-init** to preconfigure WordPress, ensuring instances are production-ready on launch  
